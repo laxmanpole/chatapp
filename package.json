@@ -1,0 +1,29 @@
+{
+    "name": "chatapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Laxman Pole",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.18.3",
+        "cors": "^2.8.5",
+        "express": "^4.16.4",
+        "express-validator": "^5.3.1",
+        "joi": "^14.3.1",
+        "json5": "^2.1.0",
+        "jsonwebtoken": "^8.5.0",
+        "jwt-simple": "^0.5.5",
+        "mongodb-schema": "^8.2.3",
+        "mongoose": "^5.4.15",
+        "nodemailer": "^5.1.1",
+        "nodemailer-express-handlebars": "^3.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.10"
+    }
+}
