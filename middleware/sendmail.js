@@ -3,12 +3,12 @@ exports.sendEMailFunction = (url, ) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'polelaxman001@gmail.com',
-            pass: 'Laxman@12345'
+            user: 'akshaykc0603@gmail.com',
+            pass: '12345678kc'
         },
     });
     const mailOptions = {
-        from: 'polelaxman001@gmail.com',
+        from: 'akshaykc0603@gmail.com',
         to: 'polelaxman001@gmail.com',
         subject: 'Chat-app password reset link ',
         text: 'Please go through the e-mail verifaction link provided in this mail:\n\n' + url

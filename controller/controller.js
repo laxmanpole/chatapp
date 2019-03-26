@@ -73,7 +73,7 @@ module.exports.forgotPassword = (req, res) => {
                 user_id: data._id
             }
             const obj = gentoken.GenerateToken(payload);
-            const url = 'http://localhost:8080/resePassword/' + obj.token;
+            const url = 'http://localhost:3000/resetPassword/' + obj.token;
             console.log("url in controller", url);
             sendmail.sendEMailFunction(url);
             res.status(200).send(url);
@@ -81,3 +81,27 @@ module.exports.forgotPassword = (req, res) => {
     });
 
 };
+module.exports.resetPassword = (req, res) => {
+    req.checkBody('password', 'password is not valid').isLength({ min: 4 });
+    var errors = req.validationErrors();
+    var response = {};
+    if (errors) {
+        response.success = false;
+        response.error = errors;
+        return res.status(422).send(response);
+    } else {
+        userService.resetPassword(req.body, (err, data) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send({
+                    message: err
+                })
+            } else {
+                return res.status(200).send({
+                    message: data
+                });
+            }
+
+        });
+    }
+}
