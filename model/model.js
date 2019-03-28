@@ -108,5 +108,44 @@ userModel.prototype.forgotPassword = (body, callback) => {
         }
     });
 }
+userModel.prototype.resetPassword = (body, callback) => {
+    user.find({ 'email': body.email }, (err, data) => {
+        if (err) {
+            console.log("Error in register user schema ");
+            return callback(err);
+        } else if (data.length > 0) {
+            response = { "error": true, "message": "Email already exists ", "errorCode": 404 };
+            return callback(response);
+        } else {
+            const newUser = new user({
+                'firstname': body.firstname,
+                'lastname': body.lastname,
+                'email': body.email,
+                'password': hash(body.password)
+            });
+            newUser.save((err, result) => {
+                if (err) {
+                    console.log("error in model file", err);
+                    return callback(err);
+                } else {
+                    console.log("data save successfully", result);
+                    return callback(null, result);
+                }
+            })
+        }
+    });
+
+}
+
+userModel.prototype.getAllUser = (req, callback) => {
+    user.find({}, (err, data) => {
+        if (err) {
+            callback("error is in model" + err)
+        } else {
+            callback(null, data);
+        }
+    })
+}
+
 
 module.exports = new userModel();

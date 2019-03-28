@@ -34,12 +34,26 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-//define a simple route
-app.get('/', (req, res) => {
-    res.json({ "message": "Welcome to ChatApp" });
-});
+
 
 //listen for requests
-app.listen(3000, () => {
+var server = app.listen(3000, () => {
     console.log("Server is listening on port 3000");
+});
+const io = require('socket.io')(server);
+io.on('connection', function(socket) {
+    console.log("socket is connected");
+    socket.on('createmessage', function(message) {
+        chatController.message(message, (err, data) => {
+            if (err) {
+                console.log("Error in message", err);
+            } else {
+                console.log(message + "in server");
+                io.emit('newMessageSingle', message);
+            }
+        });
+        socket.on('disconnect', function() {
+            console.log("socket disconnected");
+        })
+    });
 });

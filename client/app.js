@@ -27,13 +27,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'controlRegister'
         })
 
-    // .state('dashboard', {
-    //     url: '/dashboard',
-    //     templateUrl: 'templates/dashboard.html',
-    //     controller: 'chatController'
-    // });
+    .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'template/dashboard.html',
+        controller: 'chatController'
+    });
 
-    $urlRouterProvider.otherwise('login');
+    //$urlRouterProvider.otherwise('login');
 
 
 });

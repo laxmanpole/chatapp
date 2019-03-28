@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.singleChat {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+span {
+    font-size: 60%;
+    float: left;
+    margin-right: 90px
+}
+
+.chat .chatMsg {
+    width: 100%;
+    padding: 10px;
+    margin: 0px, 0px, 0px;
+    border-radius: 00px;
+    font-size: 20px
+}
+
+.friend .chatMsg {
+    background: rgba(246, 247, 240, 0.363);
+    color: rgb(20, 5, 2);
+    ;
+    text-align: left;
+}
+
+.self .chatMsg {
+    color: rgb(20, 5, 2);
+    text-align: right;
+    background: rgba(144, 148, 111, 0.363);
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    font-weight: lighter;
+    color: brown;
+}
+
+h5 {
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    font-weight: lighter;
+    color: black;
+}
+
+
+/* Style the header */
+
+header {
+    background-color: rgb(235, 224, 224);
+    padding: 5px;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    font-weight: lighter;
+    color: black;
+}
+
+.logbutton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    opacity: 0.9;
+}
+
+h3 {
+    letter-spacing: 1.1px;
+    font-weight: lighter;
+    color: rgb(39, 11, 11);
+}
+
+.sendbtn {
+    background: rgb(179, 83, 83);
+    color: white;
+    width: 30%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    height: 10%;
+}
+
+
+/* Create two columns/boxes that floats next to each other */
+
+nav {
+    float: left;
+    width: 30%;
+    height: 440px;
+    /* only for demonstration, should be removed */
+    background: rgb(185, 146, 146);
+    padding: 20px;
+    text-align: left;
+    cursor: pointer;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+/* Style the list inside the menu */
+
+nav ul {
+    text-align: center;
+}
+
+.gropChat {
+    float: right;
+    width: 70%;
+    height: 100%;
+    margin: 0px 0px 0px;
+}
+
+article {
+    float: right;
+    padding: 70px;
+    width: 70%;
+    height: 440px;
+    /* only for demonstration, should be removed */
+    background-color: rgba(88, 199, 193, 0.411);
+}
+
+.username {
+    letter-spacing: 1.1px;
+    font-weight: lighter;
+    margin: 0px 10px 0px 0px;
+    color: brown;
+}
+
+article section {
+    float: right;
+    width: 100%;
+    height: 90%;
+    color: rgb(112, 180, 219);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.text {
+    width: 100%;
+    height: 10%;
+    margin: 30px 70px 0px 0px;
+    box-sizing: border-box;
+}
