@@ -1,7 +1,7 @@
-app.service('serviceForgotPassword', function($http, $location) {
+app.service('serviceForgotPassword', function ($http, $location) {
 
 
-    this.forgotPassword = function(data, $scope) {
+    this.forgotPassword = function (data, $scope) {
         $http({
             method: 'POST',
             url: 'http://localhost:3000/forgotPassword',
@@ -14,7 +14,7 @@ app.service('serviceForgotPassword', function($http, $location) {
                 var token = response.data.token;
                 localStorage.setItem("userid", userid);
                 localStorage.setItem("name", name);
-                localStorage.setItem("token", token);
+                localStorage.setItem("token",token);
                 $location.path('/dashboard');
                 $scope.loginMessage = "login successfull";
             },

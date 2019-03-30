@@ -1,8 +1,8 @@
-app.service('serviceResetPassword', function($http, $location) {
+app.service('serviceResetPassword', function ($http, $location) {
 
-    this.resetUser = function(data, $scope) {
+    this.resetUser = function (data, $scope) {
         console.log("data on service register--- ", data);
-
+        
         $http({
             method: 'POST',
             url: 'http://localhost:3000/resetPassword',
@@ -19,7 +19,7 @@ app.service('serviceResetPassword', function($http, $location) {
             function errorCallback(response) {
 
                 console.log("reset password Unsuccessfull ");
-                $scope.message = response.data.message.message;
+             $scope.message =response.data.message.message;
 
 
             }

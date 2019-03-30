@@ -1,7 +1,7 @@
-app.service('serviceLogin', function($http, $location) {
+app.service('serviceLogin', function ($http, $location) {
 
 
-    this.login = function(data, $scope) {
+    this.login = function (data, $scope) {
         $http({
             method: 'POST',
             url: 'http://localhost:3000/login',
@@ -15,8 +15,8 @@ app.service('serviceLogin', function($http, $location) {
                 var token = response.data.token;
                 localStorage.setItem("userid", userid);
                 localStorage.setItem("name", name);
-                localStorage.setItem("token", token);
-
+                localStorage.setItem("token",token);
+            
                 // $scope.loginMessage = "login successful";
                 $location.path('/dashboard');
             },

@@ -1,8 +1,8 @@
-app.service('serviceRegister', function($http, $location) {
+app.service('serviceRegister', function ($http, $location) {
 
-    this.registerUser = function(data, $scope) {
+    this.registerUser = function (data, $scope) {
         console.log("data on service register--- ", data);
-
+        
         $http({
             method: 'POST',
             url: 'http://localhost:3000/register',
@@ -19,7 +19,7 @@ app.service('serviceRegister', function($http, $location) {
             function errorCallback(response) {
 
                 console.log("register Unsuccessfull ");
-                $scope.message = response.data.message.message;
+             $scope.message =response.data.message.message;
 
 
             }

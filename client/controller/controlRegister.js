@@ -1,13 +1,14 @@
-app.controller('controlRegister', function($scope, serviceRegister) {
+
+app.controller('controlRegister', function ($scope, serviceRegister) {
 
     // for registration form
-    $scope.register = function() {
+    $scope.register = function () {
         var user = {
             'firstname': $scope.firstname,
             'lastname': $scope.lastname,
             'email': $scope.email,
             'password': $scope.password,
-
+            
         }
 
         console.log("register calling", user);
@@ -15,7 +16,9 @@ app.controller('controlRegister', function($scope, serviceRegister) {
             $scope.message = "password does not match ";
         } else {
             serviceRegister.registerUser(user, $scope);
-
+            
         }
     }
 });
+
+

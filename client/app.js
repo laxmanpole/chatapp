@@ -33,7 +33,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'chatController'
     });
 
-    //$urlRouterProvider.otherwise('login');
+    $urlRouterProvider.otherwise('login');
 
 
 });

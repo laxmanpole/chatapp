@@ -1,7 +1,7 @@
-app.controller('controlResetPassword', function($scope, serviceResetPassword) {
+app.controller('controlResetPassword', function ($scope, serviceResetPassword) {
 
     // for registration form
-    $scope.resetPassword = function() {
+    $scope.resetPassword = function () {
         var user = {
             'password': $scope.password
         }

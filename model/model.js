@@ -1,90 +1,75 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-let saltRounds = 10;
-//const RegisterSchema=mongoose.Schema({
-const UserSchema = mongoose.Schema({
-    firstname: {
-        type: String,
-        require: [true, "firstname require"]
-    },
-    lastname: {
-        type: String,
-        require: [true, "lastname require"]
-    },
-    email: {
-        type: String,
-        require: [true, "email require"]
-    },
-    password: {
-        type: String,
-        require: [true, "password require"]
-    }
-    // title:String,
-    // content:String,
+var bcrypt = require('bcryptjs');
+// create instance of Schema
+var mongoSchema = mongoose.Schema;
+var userSchema = new mongoSchema({
+    "firstname": { type: String, required: [true, "First name is required"] },
+    "lastname": { type: String, required: [true, "LastName is required"] },
+    "email": { type: String, required: [true, "Email is required"] },
+    "password": { type: String, required: [true, "password is required"] },
 }, {
-    timestamps: true
-});
+        timestamps: true
+    });
+function usermodel() {
 
-function userModel() {}
-var user = mongoose.model('user', UserSchema);
-
-function hash(password) {
-    var hash = bcrypt.hashSync(password, saltRounds);
-    return hash;
 }
-userModel.prototype.register = (body, callback) => {
+var user = mongoose.model('user', userSchema);
+function hash(password) {
+    var salt = bcrypt.genSaltSync(10);
+    var hashPassword = bcrypt.hashSync(password, salt);
+    return hashPassword;
+}
 
-    user.find({ "email": body.email }, (err, data) => {
-        console.log("data.length " + data);
+usermodel.prototype.register = (body, callback) => {
+
+    user.find({ 'email': body.email }, (err, data) => {
         if (err) {
-            console.log("Error in registration");
+            console.log("Error in register user schema ");
             return callback(err);
         } else if (data.length > 0) {
-            console.log("data.length " + data);
-
-            console.log("Email already exists ");
-            return callback("User already Present");
-
-        } else {
+            response = { "error": true, "message": "Email already exists ", "errorCode": 404 };
+            return callback(response);
+        }
+        else {
             const newUser = new user({
+                
                 "firstname": body.firstname,
                 "lastname": body.lastname,
                 "email": body.email,
                 "password": hash(body.password)
-
             });
             newUser.save((err, result) => {
                 if (err) {
-                    console.log("Model not found");
-                    callback(err);
-
+                    console.log("error came");
+                    console.log("error in model file", err);
+                    return callback(err);
                 } else {
-                    console.log("Register Sucessfully");
+                    console.log(body.firstname);
+                    console.log("data save successfully", result);
+                    console.log("registered successfully");
                     callback(null, result);
+                    console.log("no return statements ..registered successfully");
+                    
                 }
-
             })
         }
     });
-}
-userModel.prototype.login = (body, callback) => {
 
+}
+usermodel.prototype.login = (body, callback) => {
     user.find({ "email": body.email }, (err, data) => {
-        console.log("data.length " + data);
         if (err) {
-            console.log("Error in registration");
             return callback(err);
         } else if (data.length > 0) {
-            bcrypt.compare(body.password, data[0].password, (err, res) => {
+            bcrypt.compare(body.password, data[0].password, (err, res)=> {
                 if (err) {
                     return callback(err);
                 } else if (res) {
                     console.log(data);
-                    console.log("congratz....Login successfully!!!!");
+                    console.log("congratz...!login successfully");
                     return callback(null, data);
-
                 } else {
-                    console.log("incorrect password pls check it:");
+                    console.log("incorrect password please check it once ");
                     return callback("Incorrect password").status(500);
                 }
             });
@@ -96,56 +81,65 @@ userModel.prototype.login = (body, callback) => {
         }
     });
 }
-userModel.prototype.forgotPassword = (body, callback) => {
-    user.find({ 'email': body.email }, (err, data) => {
-        if (err) {
-            return callback(err);
-        } else if (data) {
-            console.log("data in models==>", data);
-            return callback(null, user);
-        } else {
-            return callback('Invalid user !!!');
-        }
-    });
-}
-userModel.prototype.resetPassword = (body, callback) => {
-    user.find({ 'email': body.email }, (err, data) => {
-        if (err) {
-            console.log("Error in register user schema ");
-            return callback(err);
-        } else if (data.length > 0) {
-            response = { "error": true, "message": "Email already exists ", "errorCode": 404 };
-            return callback(response);
-        } else {
-            const newUser = new user({
-                'firstname': body.firstname,
-                'lastname': body.lastname,
-                'email': body.email,
-                'password': hash(body.password)
-            });
-            newUser.save((err, result) => {
-                if (err) {
-                    console.log("error in model file", err);
-                    return callback(err);
-                } else {
-                    console.log("data save successfully", result);
-                    return callback(null, result);
-                }
-            })
-        }
-    });
-
-}
-
-userModel.prototype.getAllUser = (req, callback) => {
-    user.find({}, (err, data) => {
-        if (err) {
+usermodel.prototype.forgotPassword = (body, callback) => {
+    // console.log("body in model==>",body);
+     
+     user.find({ "email": body.email }, (err, data) => {
+         if (err) {
+             return callback(err);
+         } else if (data){
+             console.log("data in models==>",data[0]._id);
+             
+             //console.log(data)
+ 
+             return callback(null, data)
+         }
+         else {
+             return callback("Invalid User ");
+         }
+     });
+ }
+ 
+ usermodel.prototype.resetPassword = (body, callback) => {
+     user.find({ 'email': body.email }, (err, data) => {
+         if (err) {
+             console.log("Error in register user schema ");
+             return callback(err);
+         } else if (data.length > 0) {
+             response = { "error": true, "message": "Email already exists ", "errorCode": 404 };
+             return callback(response);
+         }
+         else {
+             const newUser = new user({
+                 'firstname': body.firstname,
+                 'lastname': body.lastname,
+                 'email': body.email,
+                 'password': hash(body.password)
+             });
+             newUser.save((err, result) => {
+                 if (err) {
+                     console.log("error in model file", err);
+                     return callback(err);
+                 } else {
+                     console.log("data save successfully", result);
+                     return callback(null, result);
+                 }
+             })
+         }
+     });
+ 
+ }
+ 
+ usermodel.prototype.getAllUser = (req,callback) => {
+     user.find({}, (err, data)=>{
+        if(err){
             callback("error is in model" + err)
-        } else {
-            callback(null, data);
+        }else{
+            callback(null , data);
         }
-    })
-}
+     })
+ } 
 
 
-module.exports = new userModel();
+
+module.exports = new usermodel();

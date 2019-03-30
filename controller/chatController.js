@@ -12,7 +12,8 @@ try {
             }
         })
     }
-} catch (err) {
+}
+catch (err) {
     console.log("Error in sending message!");
 
 }
@@ -32,7 +33,8 @@ try {
             }
         })
     }
-} catch (err) {
+}
+catch (err) {
     console.log("Error found in server chat controll!");
 
 }

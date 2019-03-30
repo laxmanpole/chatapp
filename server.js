@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const dbConfig = require('./config/config.js');
 const mongoose = require("mongoose");
 const route = require('../chatapp/routes/routes')
+const chatController = require('./controller/chatController')
 
 
 
@@ -43,7 +44,7 @@ var server = app.listen(3000, () => {
 const io = require('socket.io')(server);
 io.on('connection', function(socket) {
     console.log("socket is connected");
-    socket.on('createmessage', function(message) {
+    socket.on('createMessage', function(message) {
         chatController.message(message, (err, data) => {
             if (err) {
                 console.log("Error in message", err);

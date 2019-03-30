@@ -1,11 +1,11 @@
-app.controller('controlLogin', function($scope, serviceLogin) {
-    $scope.login = function() {
+app.controller('controlLogin',function($scope,serviceLogin){
+    $scope.login= function(){
         var data = {
-            'email': $scope.email,
-            'password': $scope.password
+            'email':$scope.email,
+            'password':$scope.password
         }
-        console.log(data);
-
+         console.log(data);
+         
         serviceLogin.login(data);
     }
 });
