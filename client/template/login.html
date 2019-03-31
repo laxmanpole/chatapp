@@ -19,18 +19,18 @@
                     <input type="text" name="email" ng-model="email" placeholder="Enter Username" required autocomplete="on" required>
                     <h2><b>Password</b></h2>
                     <input type="password" name="password" ng-model="password" placeholder="Enter Password" minlength="8" required autocomplete="on" title="Must contain  at least 8 or more characters" required>
-
-
-                    <button type="submit" value="log In" ng-click="login()" class="login-button">Login</button>
-                    <!-- <button type="button" class="registerbutton" value="register" ng-click="register" id="calling">Register</button> -->
+                    <p><button type="submit" value="log In" ng-click="login()" class="login-button">Login</button></p>
                     <p>New to Chat App?
                         <a href="http://localhost:3000/#!/register">Register</a>.
                     </p>
                 </form>
             </main>
-            <div> <label>
-                        <span ui-sref="forgotPassword">
-                                <a href="http://localhost:3000/#!/forgotPassword">Forgot password</a></span></label>
+            <div>
+                <label>
+                  <span ui-sref="forgotPassword">
+                   <a href="http://localhost:3000/#!/forgotPassword">Forgot password</a>
+                  </span>
+                </label>
             </div>
         </article>
     </section>

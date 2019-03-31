@@ -11,7 +11,7 @@
 
 
     <style>
-        /* body {
+        body {
             font-family: Arial, Helvetica, sans-serif;
             background-color: rgb(235, 224, 224);
         }
@@ -94,7 +94,7 @@
         #main {
             width: 500px;
             margin: 20px auto;
-            background: rgb(252, 249, 249);
+            background: rgb(198, 199, 190);
             padding: 20px;
             border-radius: 4px;
             opacity: 0.96;
@@ -104,28 +104,19 @@
         #main h1 {
             letter-spacing: 3.1px;
             font-weight: lighter;
-            color: rgb(131, 108, 108);
-        }
-        
-        #main h2 {
-            letter-spacing: 1.1px;
-            font-weight: lighter;
-            color: rgb(199, 15, 15);
+            color: rgb(59, 148, 160);
         }
         
         #main label {
             text-align: justify;
         }
-        
-        */
     </style>
     <section id=main>
         <article>
             <main>
-                <form name="myForm" method="POST" style="border:1px solid #ccc">
+                <form name="myForm" method="POST" style="border:1px solid rgb(121, 24, 24)">
                     <div class="container">
-                        <h1><b>Register</b></h1>
-                        <p>please fill in this form to create an account.</p>
+                        <h1><b>Registration form</b></h1>
                         <hr>
                         <label for="firstname"><b>FirstName</b></label>
                         <input type="text" placeholder="Enter FirstName" name="firstname" ng-model="firstname" required>
@@ -137,9 +128,9 @@
                         <label for="password"><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" name="password" ng-model="password" id="password" title="at least 8 or more characters" required>
 
-                        <div>
+                    </div>
 
-                            <button type="submit" value="Sign up" ng-click="register()" ng-disabled="myForm.$invalid">Register</button>
+                    <button type="submit" value="Sign up" ng-click="register()" ng-disabled="myForm.$invalid">Register</button>
                 </form>
             </main>
         </article>

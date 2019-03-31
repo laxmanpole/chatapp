@@ -2,7 +2,7 @@ body {
     height: 100%;
     margin: 0;
     background-color: #ebdfdf;
-    background-image: url("");
+    background-image: url("xyz.jpg");
     background-color: rgb(235, 224, 224);
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,7 +16,7 @@ body {
 #main {
     width: 332px;
     margin: 30px auto;
-    background: rgb(248, 248, 248);
+    background: rgb(63, 144, 155);
     padding: 20px;
     border-radius: 4px;
     opacity: 0.96;
@@ -45,7 +45,7 @@ button {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: rgb(179, 22, 11);
     border: none;
     border-radius: 10px;
 }
